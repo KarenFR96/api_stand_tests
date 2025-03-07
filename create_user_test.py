@@ -10,7 +10,7 @@ def positive_assert(first_name):
 
     # Comprueba si el código de estado es 201
     assert user_response.status_code == 201
-    # ✅ Se verifica antes de acceder
+    # Se verifica antes de acceder
     assert "authToken" in user_response.json()
     # Comprueba que el campo authToken está en la respuesta y contiene un valor
     assert user_response.json()["authToken"] != ""
@@ -69,7 +69,6 @@ def test_create_user_has_special_symbol_in_first_name_get_error_response():
 def test_create_user_has_number_in_first_name_get_error_response():
     negative_assert_symbol("123")
 
-# Prueba 8. Error
 # La solicitud no contiene el parámetro "firstName"
 def negative_assert_no_firstname(user_body):
     # Envía la solicitud sin "firstName"
@@ -91,7 +90,6 @@ def test_create_user_no_first_name_get_error_response():
     user_body.pop("firstName")  # Elimina "firstName" de la solicitud
     negative_assert_no_firstname(user_body)  # Llama a la función corregida
 
-# Prueba 9. Error
 # El parámetro "firstName" contiene un string vacío
 def test_create_user_empty_first_name_get_error_response():
     # El cuerpo de la solicitud actualizada se guarda en la variable user_body
